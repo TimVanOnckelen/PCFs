@@ -12,7 +12,20 @@ You can use the onChange event to track changes, and process the file data in e.
 
 e.g.
 
+Example 1
 ![onChange Formula](../docs/images/screenshot_pcf3.png)
+
+Example 2
+
+```
+ForAll(
+    ParseJSON(Self.files);
+    // Do something with data
+    // ThisItem.name
+    // ThisItem.file
+)
+;;
+```
 
 ### Parameters
 
