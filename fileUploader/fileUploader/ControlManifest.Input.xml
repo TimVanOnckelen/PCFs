@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <manifest>
-  <control namespace="xe" constructor="fileUploader" version="0.0.1" display-name-key="fileUploader" description-key="fileUploader description" control-type="virtual" >
+  <control namespace="xe" constructor="fileuploader" version="0.0.1" display-name-key="fileUploader" description-key="fileUploader description" control-type="virtual" >
     <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
     If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
     Example1:
@@ -18,8 +18,14 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="labelButton" display-name-key="labelButton" description-key="LabelButton" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="labelButton" display-name-key="labelButton" description-key="Button label" of-type="SingleLine.Text" usage="bound" required="true" default-value="Choose file(s)" />
+    <property name="multiple" display-name-key="allowMultiple" description-key="Allow Multiple" of-type="TwoOptions" usage="bound" required="true" default-value="true" />
+    <property name="allowedFormats" display-name-key="allowedFormats" description-key="Allowed formats" of-type="SingleLine.Text" usage="bound" required="false" default-value="all" />
+    <property name="uploadId" display-name-key="uploadId" description-key="ID of the button" of-type="SingleLine.Text" usage="bound" required="true" default-value="xe-uploadfile-button" />
+    <property name="buttonType" display-name-key="buttonType" description-key="Button type" of-type="SingleLine.Text" usage="bound" required="false" default-value="primary" />
+    <property name="actionIcon" display-name-key="actionIcon" description-key="Action icon name" of-type="SingleLine.Text" usage="bound" required="false" default-value="primary" />
     <property name="files" display-name-key="Files" description-key="Selected Files" of-type="SingleLine.Text" usage="bound" />
+
     <!--
       Property node's of-type attribute can be of-type-group attribute.
       Example:

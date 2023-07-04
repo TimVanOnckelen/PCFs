@@ -33,7 +33,12 @@ export class fileuploader implements ComponentFramework.ReactControl<IInputs, IO
       files: (files: IFile[]) => {
         this._files = JSON.stringify(files);
       },
-      label: context.parameters.labelButton,
+      label: context.parameters.labelButton.raw,
+      multiple: context.parameters.multiple.raw,
+      accepts: context.parameters.allowedFormats.raw,
+      uploadId: context.parameters.uploadId.raw,
+      buttonType: context.parameters.buttonType.raw,
+      actionIcon: context.parameters.actionIcon.raw,
     };
     return React.createElement(FileUploader, props);
   }

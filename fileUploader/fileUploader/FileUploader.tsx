@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PrimaryButton } from '@fluentui/react';
+import { ActionButton, CompoundButton, DefaultButton, IIconProps, PrimaryButton } from '@fluentui/react';
 
 export interface IFile {
   name: string;
@@ -8,12 +8,18 @@ export interface IFile {
 export interface IFileUploaderProps {
   stateChanged: () => void;
   files: (files: IFile[]) => void;
-  label: string;
+  label: string | null;
+  multiple: boolean;
+  accepts: string | null;
+  uploadId: string | null;
+  buttonType: string | null;
+  actionIcon: string | null;
 }
 
 export const FileUploader = (props: IFileUploaderProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [files, setFiles] = React.useState<IFile[]>([]);
+  const { label, multiple, accepts, uploadId, buttonType, actionIcon } = props;
 
   const triggerUpload = React.useCallback(() => {
     if (inputRef && inputRef.current) {
@@ -43,15 +49,28 @@ export const FileUploader = (props: IFileUploaderProps) => {
     }
   }, []);
 
+  const actionIconObject: IIconProps = { iconName: actionIcon ? actionIcon : 'BulkUpload' };
+
   return (
     <>
-      <PrimaryButton onClick={triggerUpload}>Kies bestanden</PrimaryButton>
+      {buttonType === 'primary' && <PrimaryButton onClick={triggerUpload}>{label}</PrimaryButton>}
+      {buttonType === 'compound' && <CompoundButton onClick={triggerUpload}>{label}</CompoundButton>}
+      {buttonType === 'standard' && <DefaultButton onClick={triggerUpload}>{label}</DefaultButton>}
+      {buttonType === 'action' && (
+        <ActionButton
+          iconProps={actionIconObject}
+          onClick={triggerUpload}
+        >
+          {label}
+        </ActionButton>
+      )}
       <input
         type='file'
-        id='fileUpload'
+        id={uploadId ? uploadId : 'xe-fileupload-button'}
         value=''
-        multiple
+        multiple={multiple}
         ref={inputRef}
+        accept={accepts ? accepts : ''}
         onChange={fileChanged}
         style={{
           display: 'none',
