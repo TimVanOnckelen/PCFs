@@ -1,7 +1,11 @@
 {
-  "name": "pcf-project",
+  "name": "file-uploader",
   "version": "1.0.0",
-  "description": "Project containing your PowerApps Component Framework (PCF) control.",
+  "description": "A generic fluent UI button to trigger the native file selector. Outputs the selected files as data url.",
+  "author": {
+    "name": "Tim Van Onckelen",
+    "url": "https://github.com/TimVanOnckelen/"
+  },
   "scripts": {
     "build": "pcf-scripts build",
     "clean": "pcf-scripts clean",
