@@ -4,7 +4,7 @@ A generic fluent UI button to trigger the native file selector. Outputs the sele
 
 ![Screenshot FileUploader](../docs/images/screenshot_pcf.png)
 
-### Howto to get selected file data
+### Howto get selected file data
 
 The OnChange event is triggerd when selecting new files.
 A array of the data will be available after selecting new files in the "files" parameter.
@@ -20,26 +20,36 @@ e.g.
 
 Label to show on the button
 
+> Default = "Choose file(s)"
+
 #### Allow multiple files
 
 Allow the user to select multiple files at once
 
+> Default = "true"
+
 #### Allowed formats
 
-Allowed formats to select. Default = all
+Allowed formats to select.
 
 e.g. image/png,image/jpeg
 
 Please refer to [this media type list](http://www.iana.org/assignments/media-types/media-types.xhtml) for file types.
 
+> Default = "all"
+
 #### ID of the button
 
-HTML id of the input field. Default = "xe-uploadfile-button"
+HTML id of the input field.
 May be handy when adding multiple upload buttons.
+
+> Default = "xe-uploadfile-button"
 
 #### Button type
 
-Refers to type of button. Default = "primary"
+Refers to type of button.
+
+> Default = "primary"
 
 ##### Types
 
@@ -49,7 +59,8 @@ Refers to type of button. Default = "primary"
 
 Can be used in combination with the "action" button type.
 Refer to the [Fluent UI Icon tool](https://uifabricicons.azurewebsites.net/) for icon names.
-Default = "BulkUpload"
+
+> Default = "BulkUpload"
 
 #### Files
 
