@@ -23,7 +23,7 @@
     <property name="allowedFormats" display-name-key="allowedFormats" description-key="Allowed formats" of-type="SingleLine.Text" usage="bound" required="false" default-value="all" />
     <property name="uploadId" display-name-key="uploadId" description-key="ID of the button" of-type="SingleLine.Text" usage="bound" required="true" default-value="xe-uploadfile-button" />
     <property name="buttonType" display-name-key="buttonType" description-key="Button type" of-type="SingleLine.Text" usage="bound" required="false" default-value="primary" />
-    <property name="actionIcon" display-name-key="actionIcon" description-key="Action icon name" of-type="SingleLine.Text" usage="bound" required="false" default-value="primary" />
+    <property name="actionIcon" display-name-key="actionIcon" description-key="Action icon name" of-type="SingleLine.Text" usage="bound" required="false" default-value="BulkUpload" />
     <property name="files" display-name-key="Files" description-key="Selected Files" of-type="SingleLine.Text" usage="bound" />
 
     <!--
