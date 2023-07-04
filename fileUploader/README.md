@@ -2,6 +2,18 @@
 
 A generic fluent UI button to trigger the native file selector. Outputs the selected files as data url.
 
+![Screenshot FileUploader](../docs/images/screenshot_pcf.png)
+
+### Howto to get selected file data
+
+The OnChange event is triggerd when selecting new files.
+A array of the data will be available after selecting new files in the "files" parameter.
+You can use the onChange event to track changes, and process the file data in e.g. power automate.
+
+e.g.
+
+![onChange Formula](../docs/images/screenshot_pcf3.png)
+
 ### Parameters
 
 #### Label button
@@ -31,10 +43,7 @@ Refers to type of button. Default = "primary"
 
 ##### Types
 
-- primary
-- compound
-- action
-- standard
+![Button types](../docs/images/screenshot_pcf2.png)
 
 #### Action icon
 

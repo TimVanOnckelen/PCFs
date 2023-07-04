@@ -5,7 +5,7 @@
     <UniqueName>XEpcfs</UniqueName>
     <LocalizedNames>
       <!-- Localized Solution Name in language code -->
-      <LocalizedName description="Solutions" languagecode="1033" />
+      <LocalizedName description="XE Pcfs" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
     <Version>1.0</Version>
