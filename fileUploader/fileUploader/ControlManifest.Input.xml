@@ -25,7 +25,7 @@
     <property name="buttonType" display-name-key="buttonType" description-key="Button type" of-type="SingleLine.Text" usage="bound" required="false" default-value="primary" />
     <property name="actionIcon" display-name-key="actionIcon" description-key="Action icon name" of-type="SingleLine.Text" usage="bound" required="false" default-value="BulkUpload" />
     <property name="files" display-name-key="Files" description-key="Selected Files" of-type="SingleLine.Text" usage="bound" />
-    <property name="dropFilesText" display-name-key="dropFilesText" description-key="Text to show on dropzone" of-type="SingleLine.Text" usage="bound" required="true" default-value="Drop files" />
+    <property name="dropFilesText" display-name-key="dropFilesText" description-key="Text to show on dropzone" of-type="SingleLine.Text" usage="bound" required="true" default-value="Drop files or click to select files" />
     <property name="dropZoneBorderSize" display-name-key="dropZoneBorderSize" description-key="Dropzone border size" of-type="SingleLine.Text" usage="bound" required="true" default-value="1px" />
     <property name="dropZoneBorderColor" display-name-key="dropZoneBorderColor" description-key="Dropzone border color" of-type="SingleLine.Text" usage="bound" required="true" default-value="grey" />
     <property name="dropZoneTextColor" display-name-key="dropZoneTextColor" description-key="Dropzone text color" of-type="SingleLine.Text" usage="bound" required="true" default-value="black" />

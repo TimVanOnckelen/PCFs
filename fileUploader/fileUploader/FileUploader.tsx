@@ -113,6 +113,7 @@ export const FileUploader = (props: IFileUploaderProps) => {
             onDrop={onDrop}
             onDragOver={onDragOver}
             onDragLeave={onDragEnd}
+            onClick={triggerUpload}
             className={`dropzone ${isDragging ? 'is-dragging' : 'not-dragging'}`}
             style={{ borderWidth: dropZoneBorderSize!, borderColor: dropZoneBorderColor!, color: dropZoneTextColor! }}
           >
