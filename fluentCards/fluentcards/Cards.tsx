@@ -65,6 +65,8 @@ export const FluentCards = (props: IFluentCards) => {
           let data = dataSet?.records[recordID]?.getValue(dataSet?.columns[0]?.name)?.toString();
           if (dataSet?.records[recordID]?.getValue(properties?.fieldNames.title.raw!)) {
             data = dataSet?.records[recordID]?.getValue(properties?.fieldNames.title.raw!)?.toString();
+
+            console.log(dataSet?.records[recordID]);
           }
           return data;
         }
