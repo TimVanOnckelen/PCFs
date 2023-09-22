@@ -1,10 +1,10 @@
 import { IInputs, IOutputs } from './generated/ManifestTypes';
-import { FileUploader, IFile, IFileUploaderProps } from './FileUploader';
+import { FluentCards, IFluentCards } from './Cards';
 import * as React from 'react';
 
-export class fileuploader implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class fluentcards implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+  private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
   private notifyOutputChanged: () => void;
-  private _files: string = '';
 
   /**
    * Empty constructor.
@@ -28,23 +28,32 @@ export class fileuploader implements ComponentFramework.ReactControl<IInputs, IO
    * @returns ReactElement root react element for the control
    */
   public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-    const props: IFileUploaderProps = {
-      stateChanged: this.notifyOutputChanged,
-      files: (files: IFile[]) => {
-        this._files = JSON.stringify(files);
+    const props: IFluentCards = {
+      dataSet: context.parameters.dataSet,
+      navigation: context.navigation,
+      properties: {
+        showImage: context.parameters.showImage,
+        showStatus: context.parameters.showStatus,
+        showActivity: context.parameters.showActivity,
+        stackHorizontal: context.parameters.stackHorizontal,
+        cardType: context.parameters.cardType,
+        stackTokens: context.parameters.stackTokens,
+        fieldNames: {
+          image: context.parameters.imageFieldName,
+          title: context.parameters.titleFieldName,
+          description: context.parameters.descriptionFieldName,
+          activity: { user: context.parameters.activityUserFieldName, description: context.parameters.activityDescriptionFieldName },
+          status: context.parameters.statusFieldName,
+        },
+        defaultImage: context.parameters.defaultImage,
+        statusIcon: context.parameters.statusIcon,
+        card: {
+          padding: context.parameters.cardPadding,
+          childrenGap: context.parameters.cardChildGap,
+        },
       },
-      label: context.parameters.labelButton.raw,
-      multiple: context.parameters.multiple.raw,
-      accepts: context.parameters.allowedFormats.raw,
-      uploadId: context.parameters.uploadId.raw,
-      buttonType: context.parameters.buttonType.raw,
-      actionIcon: context.parameters.actionIcon.raw,
-      dropZoneText: context.parameters.dropFilesText.raw,
-      dropZoneTextColor: context.parameters.dropZoneTextColor.raw,
-      dropZoneBorderColor: context.parameters.dropZoneBorderColor.raw,
-      dropZoneBorderSize: context.parameters.dropZoneBorderSize.raw,
     };
-    return React.createElement(FileUploader, props);
+    return React.createElement(FluentCards, props);
   }
 
   /**
@@ -52,9 +61,7 @@ export class fileuploader implements ComponentFramework.ReactControl<IInputs, IO
    * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
    */
   public getOutputs(): IOutputs {
-    return {
-      files: this._files,
-    };
+    return {};
   }
 
   /**

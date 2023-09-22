@@ -1,0 +1,15 @@
+.dropzone {
+    display: block;
+    border: 1px solid black;
+    text-align: center;
+    padding: 50px;
+    margin: auto;
+    min-height: 50px;
+    height: auto;
+    font-size: 20px;
+    cursor: pointer;
+}
+.is-dragging {
+    border-style: dashed;
+    background-color: rgba(0,0,0,0.05);
+}

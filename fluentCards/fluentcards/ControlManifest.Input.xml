@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="xe" constructor="fluentcards" version="0.0.1" display-name-key="fluentcards" description-key="fluentcards description" control-type="virtual" >
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <external-service-usage enabled="false">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <!-- dataset node represents a set of entity records on CDS; allow more than one datasets -->
+    <data-set name="dataSet" display-name-key="Dataset_Display_Key">
+      <!-- 'property-set' node represents a unique, configurable property that each record in the dataset must provide. -->
+      <!-- UNCOMMENT TO ADD PROPERTY-SET NODE
+      <property-set name="samplePropertySet" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+      -->
+    </data-set>
+    <property name="showImage" usage="input" display-name-key="Show Image" description-key="Show the preview Image" of-type="TwoOptions" />
+    <property name="defaultImage" usage="input" display-name-key="Default image" description-key="Default image when no image is available" of-type="SingleLine.Text" />
+    <property name="showStatus" usage="input" display-name-key="Show Status" description-key="Show the Status" of-type="TwoOptions" />
+    <property name="showActivity" usage="input" display-name-key="Show Activity" description-key="Show the Activity" of-type="TwoOptions" />
+    <property name="stackHorizontal" usage="input" display-name-key="Stack records Horizontal" description-key="Stack records Horizontal" of-type="TwoOptions" default-value="false" />
+    <property name="cardType" usage="input" display-name-key="Card Type" description-key="Fluent Ui Card Type" of-type="SingleLine.Text" default-value="normal" />
+    <property name="stackTokens" usage="input" display-name-key="Custom Stack Token Json" description-key="Custom Stack Token in JSON format" of-type="SingleLine.Text" default-value="normal" />
+    <property name="statusIcon" usage="input" display-name-key="Status Icon" description-key="Fluent UI icon to display on status" of-type="SingleLine.Text" default-value="none" />
+    <property name="cardPadding" usage="input" display-name-key="Card Padding" description-key="Padding of the card" of-type="Whole.None" default-value="5" />
+    <property name="cardChildGap" usage="input" display-name-key="Card Child Gap" description-key="Gap between cards" of-type="Whole.None" default-value="15" />
+
+    <property name="imageFieldName" usage="input" display-name-key="Image field name" description-key="The field name of the image to show" of-type="SingleLine.Text" />
+    <property name="titleFieldName" usage="input" display-name-key="Title field name" description-key="The field name of the title" of-type="SingleLine.Text" />
+    <property name="descriptionFieldName" usage="input" display-name-key="Description field name" description-key="The field name of the description" of-type="SingleLine.Text" />
+    <property name="activityUserFieldName" usage="input" display-name-key="Activity User field name" description-key="The field name of the activity username" of-type="SingleLine.Text" />
+    <property name="activityDescriptionFieldName" usage="input" display-name-key="Activity Description field name" description-key="The field name of the activity description" of-type="SingleLine.Text" />
+    <property name="statusFieldName" usage="input" display-name-key="Status field name" description-key="The field name of the status" of-type="SingleLine.Text" />
+
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.8.6" />
+      <platform-library name="Fluent" version="8.29.0" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/fluentcards.css" order="1" />
+      <resx path="strings/fluentcards.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>

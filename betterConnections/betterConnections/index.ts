@@ -1,10 +1,10 @@
 import { IInputs, IOutputs } from './generated/ManifestTypes';
-import { FileUploader, IFile, IFileUploaderProps } from './FileUploader';
+import { BetterConnections, IBetterConnectionProps } from './BetterConnections';
 import * as React from 'react';
 
-export class fileuploader implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+export class betterConnections implements ComponentFramework.ReactControl<IInputs, IOutputs> {
+  private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
   private notifyOutputChanged: () => void;
-  private _files: string = '';
 
   /**
    * Empty constructor.
@@ -28,23 +28,8 @@ export class fileuploader implements ComponentFramework.ReactControl<IInputs, IO
    * @returns ReactElement root react element for the control
    */
   public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-    const props: IFileUploaderProps = {
-      stateChanged: this.notifyOutputChanged,
-      files: (files: IFile[]) => {
-        this._files = JSON.stringify(files);
-      },
-      label: context.parameters.labelButton.raw,
-      multiple: context.parameters.multiple.raw,
-      accepts: context.parameters.allowedFormats.raw,
-      uploadId: context.parameters.uploadId.raw,
-      buttonType: context.parameters.buttonType.raw,
-      actionIcon: context.parameters.actionIcon.raw,
-      dropZoneText: context.parameters.dropFilesText.raw,
-      dropZoneTextColor: context.parameters.dropZoneTextColor.raw,
-      dropZoneBorderColor: context.parameters.dropZoneBorderColor.raw,
-      dropZoneBorderSize: context.parameters.dropZoneBorderSize.raw,
-    };
-    return React.createElement(FileUploader, props);
+    const props: IBetterConnectionProps = { context: context };
+    return React.createElement(BetterConnections, props);
   }
 
   /**
@@ -52,9 +37,7 @@ export class fileuploader implements ComponentFramework.ReactControl<IInputs, IO
    * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
    */
   public getOutputs(): IOutputs {
-    return {
-      files: this._files,
-    };
+    return {};
   }
 
   /**
