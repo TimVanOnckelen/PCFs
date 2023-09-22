@@ -68,6 +68,8 @@ Refers to type of button.
 
 ![Button types](../docs/images/screenshot_pcf2.png)
 
+[new] in V1.2 - dropzone
+
 #### Action icon
 
 Can be used in combination with the "action" button type.
@@ -88,3 +90,13 @@ Data url can be used to process files.
     }
 ]
 ```
+
+#### Dropzone settings
+
+##### dropFilesText
+
+##### dropZoneBorderColor
+
+##### dropZoneBorderSize
+
+##### dropZoneTextColor
