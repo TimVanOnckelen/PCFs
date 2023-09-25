@@ -29,6 +29,7 @@
     <property name="dropZoneBorderSize" display-name-key="dropZoneBorderSize" description-key="Dropzone border size" of-type="SingleLine.Text" usage="bound" required="true" default-value="1px" />
     <property name="dropZoneBorderColor" display-name-key="dropZoneBorderColor" description-key="Dropzone border color" of-type="SingleLine.Text" usage="bound" required="true" default-value="grey" />
     <property name="dropZoneTextColor" display-name-key="dropZoneTextColor" description-key="Dropzone text color" of-type="SingleLine.Text" usage="bound" required="true" default-value="black" />
+    <property name="triggerReset" display-name-key="triggerReset" description-key="Reset files array by chaning the value" of-type="SingleLine.Text" usage="bound" required="true" default-value="0" />
 
     <!--
       Property node's of-type attribute can be of-type-group attribute.

@@ -19,13 +19,25 @@ export interface IFileUploaderProps {
   dropZoneTextColor: string | null;
   dropZoneBorderColor: string | null;
   dropZoneBorderSize: string | null;
+  resetFiles: string | null;
 }
 
 export const FileUploader = (props: IFileUploaderProps) => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const [files, setFiles] = React.useState<IFile[]>([]);
-  const { label, multiple, accepts, uploadId, buttonType, actionIcon, dropZoneText, dropZoneBorderColor, dropZoneBorderSize, dropZoneTextColor } =
-    props;
+  const {
+    label,
+    multiple,
+    accepts,
+    uploadId,
+    buttonType,
+    actionIcon,
+    dropZoneText,
+    dropZoneBorderColor,
+    dropZoneBorderSize,
+    dropZoneTextColor,
+    resetFiles,
+  } = props;
   const [isDragging, setIsDragging] = React.useState<boolean>(false);
 
   const triggerUpload = React.useCallback(() => {
@@ -33,6 +45,10 @@ export const FileUploader = (props: IFileUploaderProps) => {
       inputRef.current.click();
     }
   }, []);
+
+  React.useEffect(() => {
+    setFiles([]);
+  }, [resetFiles]);
 
   React.useEffect(() => {
     props.files(files);

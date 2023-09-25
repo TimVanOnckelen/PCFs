@@ -43,6 +43,7 @@ export class fileuploader implements ComponentFramework.ReactControl<IInputs, IO
       dropZoneTextColor: context.parameters.dropZoneTextColor.raw,
       dropZoneBorderColor: context.parameters.dropZoneBorderColor.raw,
       dropZoneBorderSize: context.parameters.dropZoneBorderSize.raw,
+      resetFiles: context.parameters.triggerReset.raw,
     };
     return React.createElement(FileUploader, props);
   }
