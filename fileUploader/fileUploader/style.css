@@ -1,11 +1,11 @@
 .dropzone {
-    display: block;
+display: block;
     border: 1px solid black;
     text-align: center;
     padding: 50px;
     margin: auto;
-    min-height: 50px;
-    height: auto;
+    width: 90%;
+    height: 70%;
     font-size: 20px;
     cursor: pointer;
 }
