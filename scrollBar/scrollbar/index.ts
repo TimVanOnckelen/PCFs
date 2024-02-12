@@ -5,6 +5,7 @@ import * as React from 'react';
 export class scrollbar implements ComponentFramework.ReactControl<IInputs, IOutputs> {
   private theComponent: ComponentFramework.ReactControl<IInputs, IOutputs>;
   private notifyOutputChanged: () => void;
+  private _scrollbarPosition: number;
 
   /**
    * Empty constructor.
@@ -28,7 +29,15 @@ export class scrollbar implements ComponentFramework.ReactControl<IInputs, IOutp
    * @returns ReactElement root react element for the control
    */
   public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-    const props: IScrollBarProps = { name: 'Hello, World!' };
+    const { scrollbarheight, scrollbarwidth, childContainerHeight } = context.parameters;
+    const props: IScrollBarProps = {
+      stateChanged: this.notifyOutputChanged,
+      scrollbar: { height: Number(scrollbarheight.raw), width: Number(scrollbarwidth.raw) },
+      child: { height: Number(childContainerHeight.raw), width: 1 },
+      scrollbarPostion: (position: number) => {
+        this._scrollbarPosition = position;
+      },
+    };
     return React.createElement(ScrollBar, props);
   }
 
@@ -37,7 +46,9 @@ export class scrollbar implements ComponentFramework.ReactControl<IInputs, IOutp
    * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as “bound” or “output”
    */
   public getOutputs(): IOutputs {
-    return {};
+    return {
+      scrollbarPosition: this._scrollbarPosition,
+    };
   }
 
   /**
