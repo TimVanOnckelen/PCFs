@@ -34,7 +34,7 @@ export class scrollbar implements ComponentFramework.ReactControl<IInputs, IOutp
       stateChanged: this.notifyOutputChanged,
       scrollbar: { height: Number(scrollbarheight.raw), width: Number(scrollbarwidth.raw) },
       child: { height: Number(childContainerHeight.raw), width: 1 },
-      scrollbarPostion: (position: number) => {
+      scrollbarPosition: (position: number) => {
         this._scrollbarPosition = position;
       },
     };

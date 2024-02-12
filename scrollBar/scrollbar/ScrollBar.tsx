@@ -2,13 +2,12 @@ import * as React from 'react';
 
 export interface IScrollBarProps {
   stateChanged: () => void;
-
   scrollbar: {
     height?: number;
     width?: number;
   };
   child: IChildContainer;
-  scrollbarPostion: (position: number) => void;
+  scrollbarPosition: (position: number) => void; // Corrected typo
 }
 
 export interface IChildContainer {
@@ -17,48 +16,49 @@ export interface IChildContainer {
 }
 
 export const ScrollBar = (props: IScrollBarProps) => {
-  const { scrollbar, child, scrollbarPostion, stateChanged } = props;
-  const [scrollBarPosition, setScrollBarPosition] = React.useState(0);
-  const [isScrollingScrollbar, setIsScrollingScrollbar] = React.useState(false);
+  const { scrollbar, child, scrollbarPosition, stateChanged } = props;
   const scrollbarRef = React.useRef<HTMLDivElement>(null);
 
-  const handleScroll = React.useCallback((e: React.UIEvent<HTMLDivElement>) => {
-    const { scrollTop } = e.currentTarget;
-    setScrollBarPosition(scrollTop);
-    setIsScrollingScrollbar(true);
-    let wheelEventEndTimeout: number = 0;
-    clearTimeout(wheelEventEndTimeout);
-    wheelEventEndTimeout = window.setTimeout(() => {
-      setIsScrollingScrollbar(false);
-    }, 150);
-  }, []);
-
-  window.addEventListener('wheel', (e) => {
-    let scrollSize = 1;
-
-    if (!isScrollingScrollbar) {
-      if (e.deltaY < 0) scrollSize = -1;
-
-      scrollbarRef.current?.scrollTo({ top: scrollbarRef.current.scrollTop + scrollSize });
-    }
-  });
-
-  // Notify change to power apps
   React.useEffect(() => {
-    stateChanged();
-    scrollbarPostion(scrollBarPosition);
-  }, [scrollBarPosition]);
+    const handleScroll = () => {
+      if (scrollbarRef.current) {
+        const { scrollTop } = scrollbarRef.current;
+        scrollbarPosition(scrollTop);
+        stateChanged();
+      }
+    };
+
+    const debouncedHandleScroll = debounce(handleScroll, 100); // Adjust debounce time as needed
+
+    if (scrollbarRef.current) {
+      scrollbarRef.current.addEventListener('scroll', debouncedHandleScroll, { passive: true });
+    }
+
+    return () => {
+      if (scrollbarRef.current) {
+        scrollbarRef.current.removeEventListener('scroll', debouncedHandleScroll);
+      }
+    };
+  }, [scrollbarPosition, stateChanged]);
 
   return (
     <>
+      {scrollbarPosition}
       <div
-        style={{ width: scrollbar.width + 'px', height: scrollbar.height + 'px', display: 'block', overflow: 'scroll' }}
-        onScroll={handleScroll}
-        key='pcf-scrollbar'
+        style={{ width: scrollbar.width + 'px', height: scrollbar.height + 'px', overflow: 'scroll' }}
         ref={scrollbarRef}
       >
-        <div style={{ display: 'block', height: child.height + 'px', width: child.width + 'px' }}></div>
+        <div style={{ height: child.height + 'px', width: child.width + 'px' }}></div>
       </div>
     </>
   );
 };
+
+function debounce<T extends (...args: any[]) => void>(func: T, wait: number) {
+  let timeout: ReturnType<typeof setTimeout>;
+  return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
