@@ -59,7 +59,6 @@ export const ScrollBar = (props: IScrollBarProps) => {
       >
         <div style={{ display: 'block', height: child.height + 'px', width: child.width + 'px' }}></div>
       </div>
-      {scrollBarPosition}
     </>
   );
 };
