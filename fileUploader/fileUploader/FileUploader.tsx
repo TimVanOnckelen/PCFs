@@ -137,7 +137,6 @@ export const FileUploader = (props: IFileUploaderProps) => {
           </div>
         </>
       )}
-      {files.length}
       <input
         type='file'
         id={uploadId ? uploadId : 'xe-fileupload-button'}

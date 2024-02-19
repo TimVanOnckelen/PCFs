@@ -1,6 +1,6 @@
 {
   "name": "file-uploader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A generic fluent UI button to trigger the native file selector. Outputs the selected files as data url.",
   "author": {
     "name": "Tim Van Onckelen",
