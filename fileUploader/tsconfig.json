@@ -1,6 +1,8 @@
+// tsconfig.json
 {
     "extends": "./node_modules/pcf-scripts/tsconfig_base.json",
     "compilerOptions": {
         "typeRoots": ["node_modules/@types"],
+         "lib": [ "es2015","DOM"]
     }
 }
